@@ -1,0 +1,159 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+    /* para dar um respiro maior no final, principalmente para celular */
+    padding-bottom: 50px;
+}
+
+/* margin auto ta nos lados, centralizando o componente, 40px margin top e bottom */
+.headerContainer {
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.container {
+    /* deixar as div's lado a lado */
+    display: flex;
+    max-width: 900px;
+    margin: auto;
+}
+/* seleciona a div com class leftSide que está dentro da div com class container */
+/* flex 1 */
+.container .leftSide {
+    flex: 1;
+    margin-right: 40px;
+}
+
+.container .leftSide h1 {
+    margin: 0;
+    font-size: 40px;
+    color: #3A4B5C;
+}
+
+.container .leftSide p {
+    font-size: 16px;
+    margin-bottom: 40px;
+    color: #6A7D8B;
+}
+
+.container .leftSide input {
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid rgba(150, 163, 171, 0.5);
+    padding: 10px 2px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    outline: 0;
+}
+
+/* quando os inputs estiverem desabilitados (disabled), vamos botar um estilo, para mostrar que os mesmos estão disabled */
+.container .leftSide input:disabled {
+    opacity: 0.5;
+}
+
+.container .leftSide button {
+    background-color: #227C9D;
+    color: #FFF;
+    font-size: 15px;
+    border: 0;
+    border-radius: 10px;
+    padding: 15px 0;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 40px;
+    /* transition, todas as propriedades que eu aplicar vai ter uma transição calma de 0.3s */
+    transition: all ease 0.3s;
+}
+
+.container .leftSide button:hover {
+    opacity: 0.9;
+}
+
+/* botando o disabled abaixo do hover para que quando o mesmo estiver aplicando estilos ao button, que é quando o mesmo está desabilitado, sejam sobrescrevidas as estilizações do hover pelas estilizações do disabled */
+.container .leftSide button:disabled {
+    opacity: 0.5;
+}
+
+.container .rightSide {
+    flex: 1;
+    margin-left: 40px;
+    display: flex;
+}
+
+.container .rightSide .grid {
+    /* flex 1 para essa div pegar todo o espaço disponível da div rightSide, que é flex */
+    flex: 1;
+    display: grid;
+    /* repeat para criar 2 colunas de 1fr, mesmo tamanho */
+    grid-template-columns: repeat(2, 1fr);
+    /* espaço entre um e outro */
+    gap: 20px;
+}
+
+.container .rightSide .rightBig {
+    /* pegar todo o espaço disponível */
+    flex: 1;
+    /* divs rightBig e rightArrow ficarem lado a lado */
+    display: flex;
+}
+
+.container .rightSide .rightArrow {
+    /* botando como position absolute pois o elemento vai ficar flutuando na tela */
+    position: absolute;
+    background-color: #227C9D;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: -35px;
+    margin-top: 145px;
+    transition: all ease 0.3s;
+}
+
+.container .rightSide .rightArrow:hover {
+    opacity: 0.8;
+}
+
+/* largura máxima 770px (tablet) */
+@media (max-width: 770px) {
+    header {
+        padding: 0 20px;
+    }
+
+    .container {
+        padding: 0 20px;
+        flex-direction: column;
+    }
+
+    .container .leftSide {
+        margin-right: 0;
+    }
+
+    .container .rightSide {
+        margin-left: 0;
+        margin-top: 50px;
+    }
+
+    .container .rightSide .rightArrow {
+        margin-left: 0;
+        margin-top: 0;
+        border-radius: 10px;
+    }
+}
+
+/* largura máxima 430px (celular) */
+@media (max-width: 430px) {
+    /* grid vai ter só uma coluna agora, não duas */
+    .container .rightSide .grid {
+        grid-template-columns: 1fr;
+    }
+}
